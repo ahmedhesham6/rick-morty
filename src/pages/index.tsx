@@ -3,11 +3,13 @@ import Head from "next/head";
 import {
   type Character,
   useInfiniteAllCharactersQuery,
+  type AllCharactersQuery,
 } from "../graphql/client";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 import CharacterCard from "../components/CharacterCard";
-import { useCallback, useEffect, useRef } from "react";
+import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
+import { type InfiniteQueryObserverResult } from "@tanstack/react-query";
 
 const Home: NextPage = () => {
   const {
@@ -28,32 +30,9 @@ const Home: NextPage = () => {
     }
   );
 
-  const observerElem = useRef(null);
-
-  const handleObserver = useCallback(
-    (entries: IntersectionObserverEntry[]) => {
-      const [target] = entries;
-      console.log("target", target);
-      if (target?.isIntersecting) {
-        void fetchNextPage();
-      }
-    },
-    [fetchNextPage]
-  );
-
-  useEffect(() => {
-    const element = observerElem.current;
-    const option = { threshold: 0 };
-
-    const observer = new IntersectionObserver(handleObserver, option);
-    console.log("element", { element }, { observerElem });
-    if (element) observer.observe(element);
-    return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
-    };
-  }, [fetchNextPage, hasNextPage, handleObserver]);
+  const observerElem = useInfiniteScroll<
+    InfiniteQueryObserverResult<AllCharactersQuery, unknown>
+  >(fetchNextPage, hasNextPage);
 
   return (
     <>
