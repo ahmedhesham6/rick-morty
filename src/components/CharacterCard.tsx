@@ -5,10 +5,10 @@ const CharacterCard = ({ character }: { character?: Character | null }) => {
   return (
     <div
       key={character?.id}
-      className="m-6 flex w-1/2 flex-col items-center rounded-lg border border-gray-200 bg-white p-2 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:max-w-xl md:flex-row"
+      className="m-1 flex w-2/4 flex-col items-center rounded-lg border border-gray-200 bg-white p-2 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:max-w-xl md:flex-row"
     >
       <Image
-        className="rounded-t-lg object-cover"
+        className="min-h-full w-1/2 rounded-t-lg object-cover"
         alt="character image"
         width={256}
         height={256}
