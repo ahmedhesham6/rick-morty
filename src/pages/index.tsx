@@ -43,7 +43,7 @@ const Home: NextPage = () => {
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gray-800">
         <Header />
-        <section className="flex min-w-full flex-col items-center justify-start p-20">
+        <section className="flex min-w-full flex-col items-center justify-start py-10">
           <div className="flex flex-wrap justify-center">
             {infiniteData?.pages.map((page) =>
               page?.characters?.results?.map((character) => (

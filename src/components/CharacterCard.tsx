@@ -5,16 +5,16 @@ const CharacterCard = ({ character }: { character?: Character | null }) => {
   return (
     <div
       key={character?.id}
-      className="m-1 flex w-2/4 flex-col items-center rounded-lg border border-gray-200 bg-white p-2 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 md:max-w-xl md:flex-row"
+      className="m-1 flex w-2/3 flex-col items-center rounded-lg border border-gray-200 bg-white p-2 shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 sm:w-1/3 md:w-1/3 lg:w-5/12 lg:flex-row"
     >
       <Image
-        className="min-h-full w-1/2 rounded-t-lg object-cover"
+        className="min-w-full rounded-t-lg  object-cover lg:min-h-full lg:min-w-0"
         alt="character image"
-        width={256}
-        height={256}
+        width={200}
+        height={200}
         src={character?.image ?? ""}
       />
-      <div className="flex min-h-full flex-col justify-between p-4 leading-normal">
+      <div className="flex flex-col justify-between p-4 leading-normal sm:h-1/2 lg:min-h-full">
         <section>
           <h2 className=" text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
             {character?.name}
