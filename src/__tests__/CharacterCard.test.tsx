@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
-import CharacterCard from "../../components/CharacterCard";
-import { type Character } from "../../graphql/client";
+import CharacterCard from "../components/CharacterCard";
+import { type Character } from "../graphql/client";
 
 const mockCharacter: Character = {
   id: "1",

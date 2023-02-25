@@ -1,10 +1,10 @@
 import "@testing-library/jest-dom";
 
 import { render, screen } from "@testing-library/react";
-import Home from "../../pages/index";
-import { useInfiniteAllCharactersQuery } from "../../graphql/client";
+import Home from "../pages/index";
+import { useInfiniteAllCharactersQuery } from "../graphql/client";
 
-jest.mock("../../graphql/client", () => ({
+jest.mock("../graphql/client", () => ({
   useInfiniteAllCharactersQuery: jest.fn(),
 }));
 
@@ -19,6 +19,7 @@ window.IntersectionObserver = jest.fn(() => ({
 }));
 
 describe("Home page", () => {
+  // eslint-disable-next-line @typescript-eslint/require-await
   test("renders character cards", async () => {
     // Mock the response of useInfiniteAllCharactersQuery
     const mockData = {
